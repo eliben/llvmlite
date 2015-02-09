@@ -113,11 +113,19 @@ class TestIR(TestBase):
 
     def test_globals_access(self):
         mod = self.module()
+<<<<<<< HEAD
         ir.Function(mod, ir.FunctionType(ir.VoidType(), []), 'foo')
         ir.Function(mod, ir.FunctionType(ir.VoidType(), []), 'bar')
         ir.GlobalVariable(mod, ir.DoubleType(), 'globdouble')
         self.assertIsInstance(mod.get_global('foo'), ir.Function)
         self.assertIsInstance(mod.get_global('globdouble'), ir.GlobalVariable)
+=======
+        foo = ir.Function(mod, ir.FunctionType(ir.VoidType(), []), 'foo')
+        ir.Function(mod, ir.FunctionType(ir.VoidType(), []), 'bar')
+        globdouble = ir.GlobalVariable(mod, ir.DoubleType(), 'globdouble')
+        self.assertEqual(mod.get_global('foo'), foo)
+        self.assertEqual(mod.get_global('globdouble'), globdouble)
+>>>>>>> 141f0c6c9110e7f63a1147a41c2cc5c417aacc30
         self.assertIsNone(mod.get_global('kkk'))
 
     def test_metadata(self):
